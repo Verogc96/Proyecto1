@@ -6,6 +6,9 @@ export default function Login() {
   const [username, setUsername] = useState("atuny0");
   const [password, setPassword] = useState("9uQFF1Lh");
 
+  //const [username, setUsername] = useState("");
+  //const [password, setPassword] = useState("");
+
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -13,6 +16,8 @@ export default function Login() {
     e.preventDefault();
 
     if (username && password) login(username, password);
+    setUsername(username);
+    setPassword(password);
   }
 
   useEffect(
@@ -26,10 +31,10 @@ export default function Login() {
     <main>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Email address: </label>
+          <label htmlFor="username">Username: </label>
           <input
             type="text"
-            id="email"
+            id="username"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />

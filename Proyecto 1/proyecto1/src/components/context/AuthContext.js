@@ -26,13 +26,14 @@ function AuthProvider({ children }) {
   );
 
   function login(username, password) {
-    const user = axios
+    let user = axios
       .post("https://dummyjson.com/auth/login", {
         username: username,
         password: password,
       })
       .then(function (response) {
         console.log(response.data);
+        user = response.data;
         dispatch({ type: "login", payload: user });
       })
       .catch(function (error) {
